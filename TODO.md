@@ -13,3 +13,4 @@
 - timesの一般化
 - ~~DollarとFrancを比較する~~
 - 通過の概念
+- testFrancMultiplicationを削除する？
