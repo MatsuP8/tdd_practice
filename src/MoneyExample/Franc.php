@@ -4,13 +4,13 @@
 namespace App\MoneyExample;
 
 
-class Dollar
+class Franc
 {
     /** @var int $amount */
     private $amount;
 
     /**
-     * Dollar constructor.
+     * Franc constructor.
      * @param int $amount
      */
     public function __construct(int $amount)
@@ -24,15 +24,15 @@ class Dollar
      */
     public function times(int $multiplier): self
     {
-        return new Dollar($this->amount * $multiplier);
+        return new Franc($this->amount * $multiplier);
     }
 
     /**
-     * @param Dollar $dollar
+     * @param Franc $franc
      * @return bool
      */
-    public function equals(Dollar $dollar): bool
+    public function equals(Franc $franc): bool
     {
-        return $this->amount === $dollar->amount;
+        return $this->amount === $franc->amount;
     }
 }
