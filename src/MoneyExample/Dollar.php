@@ -7,7 +7,7 @@ namespace App\MoneyExample;
 class Dollar
 {
     /** @var int $amount */
-    public $amount;
+    private $amount;
 
     /**
      * Dollar constructor.
