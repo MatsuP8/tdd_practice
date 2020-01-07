@@ -4,7 +4,7 @@
 namespace App\MoneyExample;
 
 
-abstract class Money
+class Money
 {
     /** @var int $amount */
     protected $amount;
@@ -28,7 +28,10 @@ abstract class Money
      * @param int $multiplier
      * @return Money
      */
-    abstract function times(int $multiplier): Money;
+    function times(int $multiplier): Money
+    {
+        return new Money($this->amount * $multiplier, $this->currency);
+    }
 
     /**
      * @param Money $money
@@ -36,7 +39,7 @@ abstract class Money
      */
     public function equals(Money $money): bool
     {
-        if (!($this instanceof $money)) {
+        if ($this->currency !== $money->currency) {
             return false;
         }
         return $this->amount === $money->amount;

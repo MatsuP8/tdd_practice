@@ -4,6 +4,7 @@
 namespace Test\MoneyExample;
 
 
+use App\MoneyExample\Franc;
 use App\MoneyExample\Money;
 use PHPUnit\Framework\TestCase;
 
@@ -13,9 +14,9 @@ class MoneyTest extends TestCase
     {
         $dollar = Money::dollar(5);
 
-        $this->assertEquals(Money::dollar(10), $dollar->times(2));
+        $this->assertTrue(Money::dollar(10)->equals($dollar->times(2)));
 
-        $this->assertEquals(Money::dollar(15), $dollar->times(3));
+        $this->assertTrue(Money::dollar(15)->equals($dollar->times(3)));
     }
 
     public function testEquality()
@@ -35,14 +36,19 @@ class MoneyTest extends TestCase
     {
         $franc = Money::franc(5);
 
-        $this->assertEquals(Money::franc(10), $franc->times(2));
+        $this->assertTrue(Money::franc(10)->equals($franc->times(2)));
 
-        $this->assertEquals(Money::franc(15), $franc->times(3));
+        $this->assertTrue(Money::franc(15)->equals($franc->times(3)));
     }
 
     public function testCurrency()
     {
         $this->assertEquals("USD", Money::dollar(1)->currency());
         $this->assertEquals("CHF", Money::franc(1)->currency());
+    }
+
+    public function testDifferentClassEquality()
+    {
+        $this->assertTrue((new Money(10, "CTF"))->equals(new Franc(10, "CTF")));
     }
 }
