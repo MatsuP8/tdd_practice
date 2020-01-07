@@ -4,7 +4,7 @@
 namespace App\MoneyExample;
 
 
-class Money
+class Money implements Expression
 {
     /** @var int $amount */
     protected $amount;
@@ -28,9 +28,18 @@ class Money
      * @param int $multiplier
      * @return Money
      */
-    function times(int $multiplier): Money
+    public function times(int $multiplier): Money
     {
         return new Money($this->amount * $multiplier, $this->currency);
+    }
+
+    /**
+     * @param Money $addend
+     * @return Money
+     */
+    public function plus(Money $addend): Money
+    {
+        return new Money($this->amount + $addend->amount, $this->currency);
     }
 
     /**
